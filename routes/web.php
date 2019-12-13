@@ -21,4 +21,17 @@ Route::get('/', function () {
  *  este metodo fica no controller.
  */
 
-Route::get('doesangue','PessoaController@adicionarPessoa' );
+//  GET
+Route::get('doesangue','PessoaController@listarPessoas')->name('pessoas.listAll');
+Route::get('doesangue/novo','PessoaController@formAdicionarPessoa')->name('pessoas.formAddPessoa');
+Route::get('doesangue/editar/{pessoa}','PessoaController@formEditPessoa')->name('pessoas.formEditPessoa');
+Route::get('doesangue/{pessoa}','PessoaController@verPessoa')->name('pessoas.list');
+
+// POST
+Route::post('pessoa/store', 'PessoaController@storePessoa')->name('pessoas.store');
+
+// PUT
+Route::put('pessoa/edit/{pessoa}', 'PessoaController@edit')->name('pessoas.edit');
+
+//DELETE
+Route::delete('pessoa/destroy/{pessoa}', 'PessoaController@destroy')->name('pessoa.destroy');

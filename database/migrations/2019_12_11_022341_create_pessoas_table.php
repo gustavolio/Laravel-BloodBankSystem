@@ -18,7 +18,7 @@ class CreatePessoasTable extends Migration
             
             $table->string('cpf');
             $table->string('nome');
-            $table->date('datanasc');
+            $table->string('datanasc');
             $table->string('tipo_sanguineo');
 
             $table->timestamps();

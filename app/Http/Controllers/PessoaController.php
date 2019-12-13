@@ -7,15 +7,58 @@ use Illuminate\Http\Request;
 
 class PessoaController extends Controller
 {
-    public function adicionarPessoa() {
+    public function listarPessoas() {
+        $pessoas = Pessoa::all();
+        return view('index', [
+            'pessoas' => $pessoas
+        ]);
+    }
+
+    public function verPessoa(Pessoa $pessoa) {
+        return view('verPessoa', [
+            'pessoaAtual' => $pessoa
+        ]);
+    }
+
+    public function formAdicionarPessoa() {
+        return view('newPessoa');
+    }
+
+    public function storePessoa(Request $request){
+
         $pessoa = new Pessoa();
-        $pessoa->cpf = '06339123555';
-        $pessoa->nome = 'Gustavo Lima de Oliveira';
-
-        $data = date('Y-m-d', strtotime('2015-06-19-'));
-        $pessoa->datanasc = $data->format('m-d-y H:i:s');
-
-        $pessoa->tipo_sanguineo = 'B+';
+        $pessoa->nome = $request->nome;
+        $pessoa->cpf = $request->cpf;
+        $pessoa->datanasc = $request->nasc;
+        $pessoa->tipo_sanguineo = $request->tiposang;
         $pessoa->save();
+
+        return redirect()->route('pessoas.listAll');
+    }
+
+    public function formEditPessoa(Pessoa $pessoa){
+        
+        return view('editPessoa', [
+            'pessoa' => $pessoa
+        ]);
+
+    }
+
+    public function edit(Pessoa $pessoa, Request $request){
+        $pessoa->nome = $request->nome;
+        $pessoa->cpf = $request->cpf;
+        $pessoa->datanasc = $request->nasc;
+        $pessoa->tipo_sanguineo = $request->tiposang;
+        $pessoa->save();
+
+        return redirect()->route('pessoas.listAll');
+    }
+
+    public function destroy(Pessoa $pessoa){
+
+        dd($pessoa);
+        // $pessoa->delete();
+
+        return redirect()->route('pessoas.listAll');
     }
 }
