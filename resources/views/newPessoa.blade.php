@@ -284,7 +284,7 @@
                 </select>
     
                 <input id="cadastrar" class="btn-cadastrar" type="submit" value="cadastrar" />
-                <input id="cancelar" class="btn-cadastrar" type="submit" value="cancelar" />
+                <a id="cancelar" class="btn-cadastrar" href="{{route('pessoas.listAll')}}">cancelar</a>
             </form>
         </div>
 

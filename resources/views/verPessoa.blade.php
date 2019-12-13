@@ -272,7 +272,7 @@
             <p for="nasc-pessoa">Tipo Sanguíneo</p>
             <p>{{ $pessoaAtual->tiposanguineo }}</p>
 
-            <input id="fechar" class="btn-cadastrar" type="submit" value="fechar" />
+            <a id="cancelar" class="btn-cadastrar" href="{{route('pessoas.listAll')}}">cancelar</a>
         </div>
 
 

@@ -55,10 +55,11 @@ class PessoaController extends Controller
     }
 
     public function destroy(Pessoa $pessoa){
-
-        dd($pessoa);
-        // $pessoa->delete();
-
+        $pessoa->delete();
         return redirect()->route('pessoas.listAll');
+    }
+
+    public function testePessoa(Pessoa $pessoa){
+        dd($pessoa);
     }
 }

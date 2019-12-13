@@ -18,8 +18,6 @@ class CreateBancoSangueTable extends Migration
             
             $table->string('nome');
             $table->string('endereco');
-
-            $table->timestamps();
         });
     }
 

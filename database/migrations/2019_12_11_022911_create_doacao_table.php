@@ -20,9 +20,8 @@ class CreateDoacaoTable extends Migration
             $table->integer('id_banco')->unsigned(); //Referencia ao banco
             $table->string('tipo_sangue');
             $table->integer('quantidade');
+            $table->string('data_doacao');
             $table->string('tipo');
-
-            $table->timestamps();
         });
     }
 

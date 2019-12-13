@@ -259,8 +259,9 @@
             </div>
 
             <div class="nav-menu">
-                <button id="entrada" class="nav-menu-btn">* Registrar Doação (Entrada)</button>
-                <button id="saida" class="nav-menu-btn">* Registrar Doação (Saída)</button>
+                <button id="entrada" class="nav-menu-btn">Registrar Doação</button>
+                <a id="addPessoa" class="nav-menu-btn" href="{{ route('pessoas.formAddPessoa') }}">Adicionar Pessoa</a>
+                <a id="listarDoacao" class="nav-menu-btn" href="{{ route('doacao.listAll') }}">Listar Doações</a>
             </div>
 
             <div class="logo-frame">
@@ -271,8 +272,7 @@
 
         <div class="content-page reg-entrada aba-ativa">
             <div class="header">
-                <h2 class="title item-entrada active-item">Registrar Doação (Entrada)</h2>
-                <h2 class="title item-saida">Registrar Doação (Saída)</h2>
+                <h2 class="title item-entrada active-item">Registrar Doação</h2>
             </div>
 
             <div class="list-container">
@@ -292,13 +292,16 @@
                             {{ $pessoa->tipo_sanguineo }}
                         </p>
 
-                        <form action="{{ route('pessoa.destroy', ['pessoa' => $pessoa->id]) }}">
+                        <form action="{{ route('pessoa.destroy', ['pessoa' => $pessoa->id]) }}" method="POST">
                             @csrf
                             @method('delete')
                             <input type="hidden" name="pessoa" value="{{ $pessoa->id }}">
                             <input type="submit" value="Remover">
                         </form>
 
+                        <a id="editarpessoa" href="{{ route('pessoas.formEditPessoa', ['pessoa' => $pessoa->id] ) }}">Editar</a>
+
+                        <a id="verPessoa" href="{{ route('pessoas.list', ['pessoa' => $pessoa->id] ) }}">Ver</a>
 
                         <!-- <button class="ver-pessoa">Editar</button>
                         <button class="ver-pessoa">Remover</button> -->

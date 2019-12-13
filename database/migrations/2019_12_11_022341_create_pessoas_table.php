@@ -20,8 +20,6 @@ class CreatePessoasTable extends Migration
             $table->string('nome');
             $table->string('datanasc');
             $table->string('tipo_sanguineo');
-
-            $table->timestamps();
         });
     }
 

@@ -245,7 +245,6 @@
     <div class="page-container">
         <div class="menu">
             <div class="logo">
-                <!-- <img class="img-logo" /> -->
                 <h1 class="logo-title">
                     Doe Sangue
                 </h1>
@@ -258,33 +257,32 @@
 
 
         <div class="content-page">
-            <h2 class="title item-entrada active-item">Editar Pessoa</h2>
+            <h2 class="title item-entrada active-item">Registrar Doacao</h2>
 
-            <form action="{{ route('pessoas.edit', ['pessoa' => $pessoa->id]) }}" method="post">
+            <form action="{{ route('doacao.store') }}" method="post">
                 @csrf
-                @method('PUT')
+                <label for="cpf-pessoa">ID</label>
+                <input class="cad-input" type="text" id="id-pessoa" name="id" value="{{ $pessoa->id }}" readonly=“true”/>
+
                 <label for="nome-pessoa">Nome</label>
-                <input class="cad-input" type="text" id="nome-pessoa" name="nome" value="{{ $pessoa->nome }}" />
-    
-                <label for="cpf-pessoa">CPF</label>
-                <input class="cad-input" type="text" id="cpf-pessoa" name="cpf" value="{{ $pessoa->cpf }}"/>
-    
-                <label for="nasc-pessoa">Data Nasc.</label>
-                <input class="cad-input" type="text" id="nasc-pessoa" name="nasc" value="{{ $pessoa->datanasc }}"/>
-    
-                <label>Tipo Sanguineo</label>
-                <select class="cad-input sect-tipo" name="tiposang" value="{{ $pessoa->tipo_sanguineo }}">
-                    <option value="A">A</option>
-                    <option value="A+">A+</option>
-                    <option value="B">B</option>
-                    <option value="B+">B+</option>
-                    <option value="AB">AB</option>
-                    <option value="AB+">AB+</option>
-                    <option value="O">O</option>
-                    <option value="O+">O+</option>
+                <input class="cad-input" type="text" id="nome-pessoa" name="nome" value="{{ $pessoa->nome }}" readonly=“true”/>    
+
+                <label for="tipo-sang">Tipo Sanguíneo</label>
+                <input class="cad-input" type="text" id="tipo-sang" name="tipo_sanguineo" value="{{ $pessoa->tipo_sanguineo }}" readonly=“true”/>    
+
+                <label>Tipo Doação</label>
+                <select class="cad-input sect-tipo" name="tipo">
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
                 </select>
-    
-                <input id="cadastrar" class="btn-cadastrar" type="submit" value="cadastrar" />
+                
+                <label for="quantidade">Quantidade (em litros)</label>
+                <input class="cad-input" type="text" id="quantidade" name="quantidade" />
+                
+                <label for="data-doa">Data</label>
+                <input class="cad-input" type="text" id="data-doa" name="data_doacao" />
+
+                <input id="registrar" class="btn-cadastrar" type="submit" value="registrar" />
                 <a id="cancelar" class="btn-cadastrar" href="{{route('pessoas.listAll')}}">cancelar</a>
             </form>
         </div>

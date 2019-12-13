@@ -242,6 +242,13 @@
 </head>
 
 <body>
+
+    <div class="mascara"></div>
+    <div class="modal-cadastrar-pessoa">
+
+
+    </div>
+
     <div class="page-container">
         <div class="menu">
             <div class="logo">
@@ -251,44 +258,46 @@
                 </h1>
             </div>
 
+            <div class="nav-menu">
+                <button id="entrada" class="nav-menu-btn">Registrar Doação</button>
+                <a id="addPessoa" class="nav-menu-btn" href="{{ route('pessoas.formAddPessoa') }}">Adicionar Pessoa</a>
+                <a id="listarDoacao" class="nav-menu-btn" href="">Listar Doações</a>
+            </div>
+
             <div class="logo-frame">
                 <img class="logo-frame">
             </div>
         </div>
 
 
-        <div class="content-page">
-            <h2 class="title item-entrada active-item">Editar Pessoa</h2>
+        <div class="content-page reg-entrada aba-ativa">
+            <div class="header">
+                <h2 class="title item-entrada active-item">Doações</h2>
+            </div>
 
-            <form action="{{ route('pessoas.edit', ['pessoa' => $pessoa->id]) }}" method="post">
-                @csrf
-                @method('PUT')
-                <label for="nome-pessoa">Nome</label>
-                <input class="cad-input" type="text" id="nome-pessoa" name="nome" value="{{ $pessoa->nome }}" />
-    
-                <label for="cpf-pessoa">CPF</label>
-                <input class="cad-input" type="text" id="cpf-pessoa" name="cpf" value="{{ $pessoa->cpf }}"/>
-    
-                <label for="nasc-pessoa">Data Nasc.</label>
-                <input class="cad-input" type="text" id="nasc-pessoa" name="nasc" value="{{ $pessoa->datanasc }}"/>
-    
-                <label>Tipo Sanguineo</label>
-                <select class="cad-input sect-tipo" name="tiposang" value="{{ $pessoa->tipo_sanguineo }}">
-                    <option value="A">A</option>
-                    <option value="A+">A+</option>
-                    <option value="B">B</option>
-                    <option value="B+">B+</option>
-                    <option value="AB">AB</option>
-                    <option value="AB+">AB+</option>
-                    <option value="O">O</option>
-                    <option value="O+">O+</option>
-                </select>
-    
-                <input id="cadastrar" class="btn-cadastrar" type="submit" value="cadastrar" />
-                <a id="cancelar" class="btn-cadastrar" href="{{route('pessoas.listAll')}}">cancelar</a>
-            </form>
+            <div class="list-container">
+                @foreach($doacoes as $doacao)
+                <div class="item">
+                    #
+                    <button class="btn-item">
+                        <p class="txt-btn nome">
+                            {{ $doacao->id }}
+                        </p>
+
+                        <p class="txt-btn space">
+                            /
+                        </p>
+
+                        <p class="txt-btn">{{ $doacao->tipo_sanguineo }}</p>
+                        <p class="txt-btn space">/</p>
+                        <p class="txt-btn">{{ $doacao->quantidade }}</p>
+                        <p class="txt-btn space">/</p>
+                        <p class="txt-btn">{{ $doacao->tipo }}</p>
+                    </button>
+                </div>
+                @endforeach
+            </div>
         </div>
-
 
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
         <script>
