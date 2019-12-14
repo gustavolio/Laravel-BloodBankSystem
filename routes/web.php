@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PessoaController@listarPessoas');
 
 /**
  *  - O primeiro parametro é a uri (final url)
