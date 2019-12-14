@@ -31,25 +31,25 @@
 
             <form action="{{ route('doacao.store') }}" method="post">
                 @csrf
-                <label for="cpf-pessoa">ID</label>
+                <label class="label-formulario" for="cpf-pessoa">ID</label>
                 <input class="cad-input" type="text" id="id-pessoa" name="id" value="{{ $pessoa->id }}" readonly=“true”/>
 
-                <label for="nome-pessoa">Nome</label>
+                <label class="label-formulario" for="nome-pessoa">Nome</label>
                 <input class="cad-input" type="text" id="nome-pessoa" name="nome" value="{{ $pessoa->nome }}" readonly=“true”/>    
 
-                <label for="tipo-sang">Tipo Sanguíneo</label>
+                <label class="label-formulario" for="tipo-sang">Tipo Sanguíneo</label>
                 <input class="cad-input" type="text" id="tipo-sang" name="tipo_sanguineo" value="{{ $pessoa->tipo_sanguineo }}" readonly=“true”/>    
 
-                <label>Tipo Doação</label>
+                <label class="label-formulario">Tipo Doação</label>
                 <select class="cad-input sect-tipo" name="tipo">
                     <option value="entrada">Entrada</option>
                     <option value="saida">Saída</option>
                 </select>
                 
-                <label for="quantidade">Quantidade (em litros)</label>
+                <label class="label-formulario" for="quantidade">Quantidade (em litros)</label>
                 <input class="cad-input" type="text" id="quantidade" name="quantidade" />
                 
-                <label for="data-doa">Data</label>
+                <label class="label-formulario" for="data-doa">Data</label>
                 <input class="cad-input" type="text" id="data-doa" name="data_doacao" />
 
                 <input id="registrar" class="btn-cadastrar" type="submit" value="registrar" />

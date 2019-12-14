@@ -26,21 +26,23 @@
 
 
         <div class="content-page">
-            <h2 class="title item-entrada active-item">Pessoa</h2>
-
-            <p for="nome-pessoa">Nome</p>
-            <p>{{ $pessoaAtual->nome }}</p>
-
-            <p for="cpf-pessoa">CPF</p>
-            <p>{{ $pessoaAtual->cpf }}</p>
-
-            <p for="nasc-pessoa">Data Nasc.</p>
-            <p>{{ $pessoaAtual->datanasc }}</p>
-
-            <p for="nasc-pessoa">Tipo Sanguíneo</p>
-            <p>{{ $pessoaAtual->tiposanguineo }}</p>
-
-            <a id="cancelar" class="btn-cadastrar" href="{{route('pessoas.listAll')}}">cancelar</a>
+            <div class="info-pessoa">
+                <h2 class="title item-entrada active-item">Pessoa</h2>
+    
+                <p class="label-formulario" for="nome-pessoa">Nome</p>
+                <p class="info">{{ $pessoaAtual->nome }}</p>
+    
+                <p class="label-formulario" for="cpf-pessoa">CPF</p>
+                <p class="info">{{ $pessoaAtual->cpf }}</p>
+    
+                <p class="label-formulario" for="nasc-pessoa">Data Nasc.</p>
+                <p class="info">{{ $pessoaAtual->datanasc }}</p>
+    
+                <p class="label-formulario" for="nasc-pessoa">Tipo Sanguíneo</p>
+                <p class="info">{{ $pessoaAtual->tipo_sanguineo }}</p>
+    
+                <a id="cancelar" class="btn-cadastrar" href="{{route('pessoas.listAll')}}">voltar</a>
+            </div>
         </div>
 
 

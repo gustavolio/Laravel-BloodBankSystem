@@ -183,10 +183,12 @@ input.btn-cadastrar {
 }
 
 .cad-input {
-    margin-bottom: 10px;
+    display: flex;
     width: 100%;
     border-radius: 5px;
     min-height: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
 
@@ -224,4 +226,67 @@ input.btn-cadastrar {
 
 .esconder-aba {
     display: none;
+}
+
+.header-list th {
+    background-color: black;
+    color: white;
+    padding: 5px 15px;
+}
+
+.row-table td {
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+
+.btn-pessoa {
+    border: 2.2px solid red;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: monospace;
+    padding: 4px;
+    color: black;
+}
+
+.btn-pessoa:hover {
+    background-color: #bdc3c7;
+}
+
+.label-formulario {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: large;
+}
+
+.btn-cadastrar {
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-cadastrar:hover {
+    background-color: #bdc3c7;
+}
+
+.info {
+    font-family: monospace;
+    font-size: 19px;
+}
+
+.btn-pessoa.doar {
+    border-color: black;
+    background-color: red;
+    color: white;
 }

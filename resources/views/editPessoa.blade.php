@@ -31,16 +31,16 @@
             <form action="{{ route('pessoas.edit', ['pessoa' => $pessoa->id]) }}" method="post">
                 @csrf
                 @method('PUT')
-                <label for="nome-pessoa">Nome</label>
+                <label class="label-formulario" for="nome-pessoa">Nome</label>
                 <input class="cad-input" type="text" id="nome-pessoa" name="nome" value="{{ $pessoa->nome }}" />
     
-                <label for="cpf-pessoa">CPF</label>
+                <label class="label-formulario" for="cpf-pessoa">CPF</label>
                 <input class="cad-input" type="text" id="cpf-pessoa" name="cpf" value="{{ $pessoa->cpf }}"/>
     
-                <label for="nasc-pessoa">Data Nasc.</label>
+                <label class="label-formulario" for="nasc-pessoa">Data Nasc.</label>
                 <input class="cad-input" type="text" id="nasc-pessoa" name="nasc" value="{{ $pessoa->datanasc }}"/>
     
-                <label>Tipo Sanguineo</label>
+                <label class="label-formulario">Tipo Sanguineo</label>
                 <select class="cad-input sect-tipo" name="tiposang" value="{{ $pessoa->tipo_sanguineo }}">
                     <option value="A">A</option>
                     <option value="A+">A+</option>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dor sangue</title>
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 
 </head>
@@ -29,10 +29,11 @@
             </div>
 
             <div class="nav-menu">
-                <button id="entrada" class="nav-menu-btn">Registrar Doação</button>
+                <a id="addPessoa" class="nav-menu-btn" href="{{ route('pessoas.listAll') }}">Registrar doação</a>
                 <a id="addPessoa" class="nav-menu-btn" href="{{ route('pessoas.formAddPessoa') }}">Adicionar Pessoa</a>
-                <a id="listarDoacao" class="nav-menu-btn" href="">Listar Doações</a>
+                <a id="listarDoacao" class="nav-menu-btn" href="{{ route('doacao.listAll') }}">Listar Doações</a>
             </div>
+
 
             <div class="logo-frame">
                 <img class="logo-frame">
@@ -45,28 +46,24 @@
                 <h2 class="title item-entrada active-item">Doações</h2>
             </div>
 
-            <div class="list-container">
+
+            <table class="list list-doações">
+                <tr class="header-list">
+                    <th>Id</th>
+                    <th>Tipo Sanguíneo</th>
+                    <th>Quantidade (L)</th>
+                    <th>Tipo de doação</th>
+                </tr>
+
                 @foreach($doacoes as $doacao)
-                <div class="item">
-                    #
-                    <button class="btn-item">
-                        <p class="txt-btn nome">
-                            {{ $doacao->id }}
-                        </p>
-
-                        <p class="txt-btn space">
-                            /
-                        </p>
-
-                        <p class="txt-btn">{{ $doacao->tipo_sanguineo }}</p>
-                        <p class="txt-btn space">/</p>
-                        <p class="txt-btn">{{ $doacao->quantidade }}</p>
-                        <p class="txt-btn space">/</p>
-                        <p class="txt-btn">{{ $doacao->tipo }}</p>
-                    </button>
-                </div>
+                <tr class="row-table">
+                    <td># {{ $doacao->id }}</td>
+                    <td>{{ $doacao->tipo_sangue }}</td>
+                    <td>{{ $doacao->quantidade }}</td>
+                    <td>{{ $doacao->tipo }}</td>
+                </tr>
                 @endforeach
-            </div>
+            </table>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

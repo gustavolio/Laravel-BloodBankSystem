@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dor sangue</title>
 
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"> 
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -29,7 +29,7 @@
             </div>
 
             <div class="nav-menu">
-                <button id="entrada" class="nav-menu-btn">Registrar Doação</button>
+                <a id="addPessoa" class="nav-menu-btn" href="{{ route('pessoas.listAll') }}">Registrar doação</a>
                 <a id="addPessoa" class="nav-menu-btn" href="{{ route('pessoas.formAddPessoa') }}">Adicionar Pessoa</a>
                 <a id="listarDoacao" class="nav-menu-btn" href="{{ route('doacao.listAll') }}">Listar Doações</a>
             </div>
@@ -45,40 +45,41 @@
                 <h2 class="title item-entrada active-item">Registrar Doação</h2>
             </div>
 
-            <div class="list-container">
+            <table class="lista-pessoas">
+                <tr class="header-list">
+                    <th>Nome</th>
+                    <th>Tipo Sanguíneo</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
                 @foreach($pessoas as $pessoa)
-                <div class="item">
-                    #
-                    <button class="btn-item">
-                        <p class="txt-btn nome">
-                            {{ $pessoa->nome }}
-                        </p>
-
-                        <p class="txt-btn space">
-                            /
-                        </p>
-
-                        <p class="txt-btn">
-                            {{ $pessoa->tipo_sanguineo }}
-                        </p>
-
+                <tr class="row-table">
+                    <td>{{ $pessoa->nome }}</td>
+                    <td>{{ $pessoa->tipo_sanguineo }}</td>
+                    <td>
+                        <a class="btn-pessoa doar" id="verPessoa" href="{{ route('doacao.formAddDoacao', ['pessoa' => $pessoa->id] ) }}">Doar</a>
+                    </td>
+                    <td>
+                        <a class="btn-pessoa" id="editarpessoa" href="{{ route('pessoas.formEditPessoa', ['pessoa' => $pessoa->id] ) }}">Editar</a>
+                    </td>
+                    <td>
+                        <a class="btn-pessoa" id="verPessoa" href="{{ route('pessoas.list', ['pessoa' => $pessoa->id] ) }}">Ver</a>
+                    </td>
+                    <td>
                         <form action="{{ route('pessoa.destroy', ['pessoa' => $pessoa->id]) }}" method="POST">
                             @csrf
                             @method('delete')
                             <input type="hidden" name="pessoa" value="{{ $pessoa->id }}">
-                            <input type="submit" value="Remover">
+                            <input class="btn-pessoa" type="submit" value="Remover">
                         </form>
-
-                        <a id="editarpessoa" href="{{ route('pessoas.formEditPessoa', ['pessoa' => $pessoa->id] ) }}">Editar</a>
-
-                        <a id="verPessoa" href="{{ route('pessoas.list', ['pessoa' => $pessoa->id] ) }}">Ver</a>
-
-                        <!-- <button class="ver-pessoa">Editar</button>
-                        <button class="ver-pessoa">Remover</button> -->
-                    </button>
-                </div>
+                    </td>
+                </tr>
                 @endforeach
-            </div>
+            </table>
+
+  
         </div>
 
         <div class="content-page doacao-entrada esconder-aba">
